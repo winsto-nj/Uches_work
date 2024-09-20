@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int     @id @default(autoincrement())
+  name       String
+  Password   String
+  email      String  @unique
+  role       ROLE
+  school_Id   Int?
+  School     School? @relation("SchoolUsers", fields: [school_Id], references: [id])
+}
+
+model School {
+  id   Int    @id @default(autoincrement())
+  name String
+  address String
+  User User[]   @relation("SchoolUsers")
+  encryption_keys Encryption_keys[] @relation("schoolEncryptionKeys")
+}
+
+model Encryption_keys{
+    id Int @id @default(autoincrement())//primary key
+    name String
+    school_Id Int
+    private_key String
+    public_key String
+    school School?@relation("schoolEncryptionKeys",fields: [school_Id], references: [id])
+
+}
+
+enum ROLE {
+ADMIN
+USER
+STUDENT
+}
