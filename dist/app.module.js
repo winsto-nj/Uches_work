@@ -19,14 +19,17 @@ const db_module_1 = require("./db/db.module");
 const school_service_1 = require("./school/school.service");
 const school_controller_1 = require("./school/school.controller");
 const school_module_1 = require("./school/school.module");
+const encryption_service_1 = require("./encryption/encryption.service");
+const encryption_controller_1 = require("./encryption/encryption.controller");
+const encryption_module_1 = require("./encryption/encryption.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [auth_module_1.AuthModule, db_module_1.DbModule, school_module_1.SchoolModule],
-        controllers: [app_controller_1.AppController, school_controller_1.SchoolController],
-        providers: [app_service_1.AppService, db_service_1.DbService, student_service_1.StudentService, _user_service_1.UserService, admin_service_1.AdminService, school_service_1.SchoolService],
+        imports: [auth_module_1.AuthModule, db_module_1.DbModule, school_module_1.SchoolModule, encryption_module_1.EncryptionModule],
+        controllers: [app_controller_1.AppController, school_controller_1.SchoolController, encryption_controller_1.EncryptionController],
+        providers: [app_service_1.AppService, db_service_1.DbService, student_service_1.StudentService, _user_service_1.UserService, admin_service_1.AdminService, school_service_1.SchoolService, encryption_service_1.EncryptionService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
